@@ -1,6 +1,6 @@
 // app/page.tsx
 import Link from "next/link"
-import { Button } from "./components/ui/Button"
+import { Button }from "@/components/ui/Button"
 import { ArrowRight, Box, BarChart3, ShieldCheck } from "lucide-react"
 
 export default function Page() {
@@ -42,7 +42,7 @@ export default function Page() {
               variant="primary"
               className="h-12 px-8 rounded-full text-base font-semibold transition-all hover:scale-105"
             >
-              <Link href="/signin">Sign in</Link>
+              <Link href="/sign-in">Sign in</Link>
             </Button>
 
             <Button
