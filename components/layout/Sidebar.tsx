@@ -26,7 +26,7 @@ export default function Sidebar() {
       <nav className="flex-1 px-4 space-y-1">
         {navigation.map((item) => {
           const Icon = item.icon;
-          const isActive = pathname === item.href;
+          const isActive = pathname === item.href; 
 
           return (
             <Link
@@ -35,7 +35,7 @@ export default function Sidebar() {
               className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition
                 ${
                   isActive
-                    ? "bg-background text-foreground selection:bg-primary selection:text-primary-foreground text-gray-100"
+                    ? "bg-background text-foreground selection:bg-primary selection:text-primary-foreground"
                     : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                 }
               `}
