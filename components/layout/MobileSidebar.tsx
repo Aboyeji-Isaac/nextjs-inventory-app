@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X, BarChart3, Package, Plus, Settings } from "lucide-react";
 import { UserButton } from "@stackframe/stack";
+import Image from "next/image";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: BarChart3 },
@@ -34,7 +35,13 @@ export default function MobileSidebar({
       {/* Sidebar */}
       <div className="relative w-64 bg-background text-foreground selection:bg-primary selection:text-primary-foreground h-full flex flex-col">
         <div className="h-16 px-4 flex items-center justify-between border-b">
-          <span className="font-semibold text-lg">MyApp</span>
+        <Image
+        src="/Logo.svg"
+        alt="Logo"
+        width={50}
+        height={30}
+        />
+        <h1>Inventory</h1>
           <button onClick={onClose}>
             <X className="h-5 w-5" />
           </button>

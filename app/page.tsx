@@ -2,8 +2,15 @@
 import Link from "next/link"
 import { Button }from "@/components/ui/Button"
 import { ArrowRight, Box, BarChart3, ShieldCheck } from "lucide-react"
+import { stackServerApp } from "@/stack/server"
+import { redirect } from "next/navigation";
+// import Image from "netx/image"
 
-export default function Page() {
+export default async function Page() {
+  const user = await stackServerApp.getUser();
+  if (user) {
+    redirect("/dashboard");
+  }
   return (
     <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32">
       {/* Background Decorative Elements */}
@@ -14,6 +21,11 @@ export default function Page() {
 
       <div className="container px-4 mx-auto">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+          {/* <div>
+            <Image
+            src="/Logo.svg"
+            />
+          </div> */}
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted border border-border text-xs font-medium text-muted-foreground mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <span className="relative flex h-2 w-2">

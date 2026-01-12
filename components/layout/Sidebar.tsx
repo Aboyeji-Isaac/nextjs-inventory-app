@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BarChart3, Package, Plus, Settings } from "lucide-react";
 import { UserButton } from "@stackframe/stack";
+import Image from "next/image"
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: BarChart3 },
@@ -18,8 +19,14 @@ export default function Sidebar() {
   return (
     <aside className="hidden lg:flex fixed inset-y-0 left-0 w-64 flex-col border-r bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
       {/* Logo */}
-      <div className="h-16 flex items-center px-6 text-xl font-semibold">
-        MyApp
+      <div className="h-16 flex items-center px-6 py-2 text-xl font-semibold">
+        <Image
+        src="/Logo.svg"
+        alt="Logo"
+        width={50}
+        height={30}
+        />
+        <h1 className="ml-3">Inventory</h1>
       </div>
 
       {/* Nav */}

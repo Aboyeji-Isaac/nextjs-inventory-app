@@ -1,5 +1,6 @@
 import { getCurrentUser } from "@/lib/auth";
 import { UserButton } from "@stackframe/stack";
+import Image from "next/image";
 
 export default async function SettingsPage() {
   const user = await getCurrentUser();
@@ -20,7 +21,7 @@ export default async function SettingsPage() {
           <h2 className="text-lg font-semibold mb-6">Profile</h2>
 
           <div className="flex items-center gap-4 mb-6">
-            <img
+            <Image
               src={user.profileImageUrl ?? "/avatar-placeholder.png"}
               alt={user.displayName ?? "User"}
               className="w-16 h-16 rounded-full border border-gray-800"

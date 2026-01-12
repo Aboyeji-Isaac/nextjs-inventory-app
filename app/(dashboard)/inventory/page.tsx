@@ -1,17 +1,18 @@
 import Pagination from "@/components/pagination";
-import { deleteProduct } from "@/lib/actions/products"
 import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { DeleteProductButton } from "@/components/ui/delete-product-button";
+
 
 export default async function InventoryPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; page?: string }>; // Changed to Promise
+  searchParams: Promise<{ q?: string; page?: string }>;
 }) {
   const user = await getCurrentUser();
   const userId = user.id;
 
-  const params = await searchParams; // Await the promise
+  const params = await searchParams;
   const q = (params.q ?? "").trim();
   const page = Math.max(1, Number(params.page ?? 1));
   const pageSize = 5;
@@ -33,7 +34,6 @@ export default async function InventoryPage({
 
   const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
 
-  /* ---------- Make products type-safe ---------- */
   const safeProducts = products.map((p) => ({
     ...p,
     quantity: Number(p.quantity ?? 0),
@@ -99,17 +99,8 @@ export default async function InventoryPage({
                       {product.lowStockAt}
                     </td>
                     <td className="px-6 py-4 text-sm">
-                      <form
-                        action={async (formData: FormData) => {
-                          "use server";
-                          await deleteProduct(formData);
-                        }}
-                      >
-                        <input type="hidden" name="id" value={product.id} />
-                        <button className="text-red-500 hover:text-red-700">
-                          Delete
-                        </button>
-                      </form>
+                      {/* Replace the old form with the new component */}
+                      <DeleteProductButton productId={product.id} />
                     </td>
                   </tr>
                 ))}

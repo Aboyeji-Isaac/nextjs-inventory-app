@@ -1,28 +1,29 @@
 import { createProduct } from "@/lib/actions/products";
 import { getCurrentUser } from "@/lib/auth";
 import Link from "next/link";
+import { SubmitButton } from "@/components/ui/submit-button";
+import { FormWithToast } from "@/components/form-with-toast";
 
 export default async function AddProductPage() {
-  await getCurrentUser(); // ensures auth
+  await getCurrentUser();
 
   return (
     <>
-      {/* Header */}
       <div className="mb-8">
-        <h1 className="text-xl font-semibold">Add Product</h1>
         <p className="text-sm text-gray-500">
           Add a new product to your inventory
         </p>
       </div>
 
-      {/* Form */}
       <div className="max-w-2xl">
         <div className="bg-black rounded-lg border p-6">
-          <form action={createProduct} className="space-y-6">
-            {/* Name */}
+          <FormWithToast action={createProduct} className="space-y-6">
             <div>
-              <label className="block text-sm mb-2">Product Name *</label>
+              <label htmlFor="name" className="block text-sm mb-2">
+                Product Name *
+              </label>
               <input
+                id="name"
                 name="name"
                 required
                 placeholder="Enter product name"
@@ -30,11 +31,13 @@ export default async function AddProductPage() {
               />
             </div>
 
-            {/* Quantity + Price */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm mb-2">Quantity *</label>
+                <label htmlFor="quantity" className="block text-sm mb-2">
+                  Quantity *
+                </label>
                 <input
+                  id="quantity"
                   name="quantity"
                   type="number"
                   min={0}
@@ -45,8 +48,11 @@ export default async function AddProductPage() {
               </div>
 
               <div>
-                <label className="block text-sm mb-2">Price *</label>
+                <label htmlFor="price" className="block text-sm mb-2">
+                  Price *
+                </label>
                 <input
+                  id="price"
                   name="price"
                   type="number"
                   step="0.01"
@@ -58,22 +64,24 @@ export default async function AddProductPage() {
               </div>
             </div>
 
-            {/* SKU */}
             <div>
-              <label className="block text-sm mb-2">SKU (optional)</label>
+              <label htmlFor="sku" className="block text-sm mb-2">
+                SKU (optional)
+              </label>
               <input
+                id="sku"
                 name="sku"
                 placeholder="Optional SKU"
                 className="w-full px-4 py-2 rounded-lg bg-gray-950 border border-gray-800 focus:outline-none"
               />
             </div>
 
-            {/* Low stock */}
             <div>
-              <label className="block text-sm mb-2">
+              <label htmlFor="lowStockAt" className="block text-sm mb-2">
                 Low Stock Threshold (optional)
               </label>
               <input
+                id="lowStockAt"
                 name="lowStockAt"
                 type="number"
                 min={0}
@@ -82,14 +90,10 @@ export default async function AddProductPage() {
               />
             </div>
 
-            {/* Actions */}
             <div className="flex gap-4 pt-2">
-              <button
-                type="submit"
-                className="px-6 py-2 bg-green-600 text-black rounded-lg hover:bg-green-700"
-              >
+              <SubmitButton variant="primary" loadingText="Adding Product...">
                 Add Product
-              </button>
+              </SubmitButton>
 
               <Link
                 href="/inventory"
@@ -98,7 +102,7 @@ export default async function AddProductPage() {
                 Cancel
               </Link>
             </div>
-          </form>
+          </FormWithToast>
         </div>
       </div>
     </>
