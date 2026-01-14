@@ -9,8 +9,7 @@ export default async function SettingsPage() {
     <>
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-xl font-semibold">Settings</h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-100">
           Manage your account and preferences
         </p>
       </div>
@@ -24,7 +23,9 @@ export default async function SettingsPage() {
             <Image
               src={user.profileImageUrl ?? "/avatar-placeholder.png"}
               alt={user.displayName ?? "User"}
-              className="w-16 h-16 rounded-full border border-gray-800"
+              className="rounded-full border border-gray-800"
+              width={64}
+              height={64}
             />
 
             <div>

@@ -45,8 +45,7 @@ export default async function InventoryPage({
     <>
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-xl font-semibold">Inventory</h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-100">
           Manage your products and track inventory levels.
         </p>
       </div>
@@ -99,7 +98,6 @@ export default async function InventoryPage({
                       {product.lowStockAt}
                     </td>
                     <td className="px-6 py-4 text-sm">
-                      {/* Replace the old form with the new component */}
                       <DeleteProductButton productId={product.id} />
                     </td>
                   </tr>
