@@ -21,7 +21,7 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="h-16 flex items-center px-6 py-2 text-xl font-semibold">
         <Image
-        src="/Logo.svg"
+        src="/logo.svg"
         alt="Logo"
         width={50}
         height={30}

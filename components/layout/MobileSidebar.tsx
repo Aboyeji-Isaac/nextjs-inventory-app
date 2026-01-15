@@ -36,7 +36,7 @@ export default function MobileSidebar({
       <div className="relative w-64 bg-background text-foreground selection:bg-primary selection:text-primary-foreground h-full flex flex-col">
         <div className="h-16 px-4 flex items-center justify-between border-b">
         <Image
-        src="/Logo.svg"
+        src="/logo.svg"
         alt="Logo"
         width={50}
         height={30}
