@@ -32,8 +32,18 @@ export default async function DashboardPage() {
   console.log('Total products found:', totalProducts);
 console.log('Products:', allProducts);
 
+//Define the type
+type ProductSelect = {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  createdAt: Date;
+  lowStockAt: number | null;
+};
+
 // Make all numeric fields safe
-const safeProducts = allProducts.map((p) => ({
+const safeProducts = allProducts.map((p: ProductSelect) => ({
   ...p,
   quantity: Number(p.quantity ?? 0),
   price: Number(p.price ?? 0),
