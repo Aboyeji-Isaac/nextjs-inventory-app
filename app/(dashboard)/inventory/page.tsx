@@ -1,4 +1,3 @@
-import { Product } from "@prisma/client";
 import Pagination from "@/components/pagination";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
@@ -35,7 +34,7 @@ export default async function InventoryPage({
 
   const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
 
-  const safeProducts = products.map((p: Product) => ({
+  const safeProducts = products.map((p) => ({
     ...p,
     quantity: Number(p.quantity ?? 0),
     price: Number(p.price ?? 0),
@@ -83,7 +82,7 @@ export default async function InventoryPage({
               </thead>
 
               <tbody className="divide-y divide-gray-900">
-                {safeProducts.map((product: typeof safeProducts[number]) => (
+                {safeProducts.map((product) => (
                   <tr key={product.id} className="hover:bg-gray-950">
                     <td className="px-6 py-4 text-sm">{product.name}</td>
                     <td className="px-6 py-4 text-sm text-gray-400">
@@ -112,11 +111,11 @@ export default async function InventoryPage({
         {totalPages > 1 && (
           <div className="bg-black rounded-lg border p-6">
             <Pagination
-              currentPage={page}
-              totalPages={totalPages}
-              baseUrl="/inventory"
-              searchParams={{ q }}
-            />
+            currentPage={page}
+            totalPages={totalPages}
+            baseUrl="/inventory"
+            searchParams={{ q: q || "" }}
+          />
           </div>
         )}
       </div>
