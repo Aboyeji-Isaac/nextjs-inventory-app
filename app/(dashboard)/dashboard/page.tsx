@@ -51,7 +51,7 @@ const safeProducts = allProducts.map((p: ProductSelect) => ({
 }));
 
   const totalValue = safeProducts.reduce(
-    (sum: number, p) => sum + p.price * p.quantity,
+    (sum: number, p: ProductSelect) => sum + p.price * p.quantity,
     0
   );
 
