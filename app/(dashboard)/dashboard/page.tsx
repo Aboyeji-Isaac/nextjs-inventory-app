@@ -32,13 +32,13 @@ export default async function DashboardPage() {
   console.log('Total products found:', totalProducts);
 console.log('Products:', allProducts);
 
-  // Make all numeric fields safe
-  const safeProducts = allProducts.map((p: any) => ({
-    ...p,
-    quantity: Number(p.quantity ?? 0),
-    price: Number(p.price ?? 0),
-    lowStockAt: p.lowStockAt ?? 5
-  }));
+// Make all numeric fields safe
+const safeProducts = allProducts.map((p) => ({
+  ...p,
+  quantity: Number(p.quantity ?? 0),
+  price: Number(p.price ?? 0),
+  lowStockAt: p.lowStockAt ?? 5
+}));
 
   const totalValue = safeProducts.reduce(
     (sum, p) => sum + p.price * p.quantity,
