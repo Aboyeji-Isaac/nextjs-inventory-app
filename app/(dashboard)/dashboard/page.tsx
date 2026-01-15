@@ -33,7 +33,7 @@ export default async function DashboardPage() {
 console.log('Products:', allProducts);
 
   // Make all numeric fields safe
-  const safeProducts = allProducts.map(p => ({
+  const safeProducts = allProducts.map((p: any) => ({
     ...p,
     quantity: Number(p.quantity ?? 0),
     price: Number(p.price ?? 0),
