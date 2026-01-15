@@ -34,7 +34,9 @@ export default async function InventoryPage({
 
   const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
 
-  const safeProducts = products.map((p) => ({
+  type ProductType = (typeof products)[number];
+
+  const safeProducts = products.map((p: ProductType) => ({
     ...p,
     quantity: Number(p.quantity ?? 0),
     price: Number(p.price ?? 0),
