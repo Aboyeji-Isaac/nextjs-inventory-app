@@ -55,9 +55,9 @@ const safeProducts = allProducts.map((p: ProductSelect) => ({
     0
   );
 
-  const inStockCount = safeProducts.filter(p => p.quantity > 5).length;
-  const lowStockCount = safeProducts.filter(p => p.quantity > 0 && p.quantity <= 5).length;
-  const outOfStockCount = safeProducts.filter(p => p.quantity === 0).length;
+  const inStockCount = safeProducts.filter((p: ProductSelect) => p.quantity > 5).length;
+  const lowStockCount = safeProducts.filter((p: ProductSelect) => p.quantity > 0 && p.quantity <= 5).length;
+  const outOfStockCount = safeProducts.filter((p: ProductSelect) => p.quantity === 0).length;
 
   const inStockPercentage = totalProducts > 0 ? Math.round((inStockCount / totalProducts) * 100) : 0;
   const lowStockPercentage = totalProducts > 0 ? Math.round((lowStockCount / totalProducts) * 100) : 0;
@@ -78,7 +78,7 @@ const safeProducts = allProducts.map((p: ProductSelect) => ({
 
     const label = `${String(weekStart.getMonth() + 1).padStart(2, "0")}/${String(weekStart.getDate()).padStart(2, "0")}`;
 
-    const count = safeProducts.filter(p => {
+    const count = safeProducts.filter((p: ProductSelect) => {
       const d = new Date(p.createdAt);
       return d >= weekStart && d <= weekEnd;
     }).length;
@@ -92,7 +92,7 @@ const safeProducts = allProducts.map((p: ProductSelect) => ({
     take: 5,
   });
 
-  const safeRecent = recent.map(p => ({
+  const safeRecent = recent.map((p: ProductSelect) => ({
     ...p,
     quantity: Number(p.quantity ?? 0),
     lowStockAt: p.lowStockAt ?? 5,
@@ -131,7 +131,7 @@ const safeProducts = allProducts.map((p: ProductSelect) => ({
         <div className="bg-black rounded-lg border p-6">
           <h2 className="text-lg font-semibold mb-6">Stock Levels</h2>
           <div className="space-y-3">
-            {safeRecent.map(product => {
+            {safeRecent.map((product: ProductSelect) => {
               const qty = product.quantity;
               const LOW_STOCK_THRESHOLD = 5;
               const stockLevel = qty === 0 ? 0 : qty <= LOW_STOCK_THRESHOLD ? 1 : 2;
